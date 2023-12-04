@@ -13,16 +13,16 @@ int _printf(const char* format, ...) {
         if (*format == '%') {
             format++;
             switch (*format) {
-                case 'd': {
-                    int num = va_arg(args, int);
-                    printf("%d", num);
-                    break;
-                }
-                case 'f': {
-                    double num = va_arg(args, double);
-                    printf("%f", num);
-                    break;
-                }
+                // case 'd': {
+                //     int num = va_arg(args, int);
+                //     printf("%d", num);
+                //     break;
+                // }
+                // case 'f': {
+                //     double num = va_arg(args, double);
+                //     printf("%f", num);
+                //     break;
+                // }
                 case 's': {
                     char* str = va_arg(args, char*);
                     printf("%s", str);
