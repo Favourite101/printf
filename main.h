@@ -7,9 +7,6 @@
 
 
 int _printf(const char *format, ...);
-int _putchar(char c);
-int str_len(char *v);
-
-
+ssize_t write_int(int fd, int a);
 
 #endif

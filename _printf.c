@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * _printf - Write a function that produces output according to a format
+ * @format: is a character string.
+ *
+ * Return: the number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 	int cont = 0;
@@ -37,6 +43,13 @@ int _printf(const char *format, ...)
 				char cen = '%';
 
 				write(1, &cen, 1);
+				cont++;
+			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				int num = va_arg(list, int);
+
+				write_int(1, num);
 				cont++;
 			}
 		}
