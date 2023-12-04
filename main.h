@@ -11,4 +11,4 @@ ssize_t write_int(int fd, int a);
 int str_len(char *v);
 int _putchar(char c);
 
-#endif
+#endif /*MAIN_H*/
