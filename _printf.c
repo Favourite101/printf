@@ -1,55 +1,47 @@
-#include <stdarg.h>
-#include <stdio.h>
+#include "main.h"
 
-/**
- * _printf - prints anything
- * @format: list of argument types passed to the function
- *
- * Return: number of characters printed
- */
-int _printf(const char* format, ...)
+int _printf(const char *format, ...)
 {
-	int count;
-	char ch;
-	char *st;
+	int cont = 0;
 
-	va_list input;
-	va_start(input, format);
+	va_list(list);
 
-	count = 0;
-	while (*format != '\0')
+	va_start(list, format);
+
+	while (*format)
 	{
-		count++;
-		if (*format == '%')
+		if (*format != '%')
 		{
-			format++;
-			switch (*format)
-			{
-				case 's':
-				{
-					st = va_arg(input, char*);
-					printf("%s", st);
-					break;
-				}
-				case 'c':
-				{
-					ch = va_arg(input, int);
-					printf("%c", ch);
-					break;
-				}
-				default:
-					putchar(*format);
-			}
+			write(1, format, 1);
+			cont++;
 		}
 		else
 		{
-			putchar(*format);
-		}
+			format++;
 
+			if (*format == 'c')
+			{
+				char fav = va_arg(list, int);
+
+				write(1, &fav, 1);
+				cont++;
+			}
+			else if (*format == 's')
+			{
+				char *z = va_arg(list, char *);
+
+				cont += write(1, z, strlen(z));
+			}
+			else if (*format == '%')
+			{
+				char cen = '%';
+
+				write(1, &cen, 1);
+				cont++;
+			}
+		}
 		format++;
 	}
-
-	va_end(input);
-
-	return(count);
+	va_end(list);
+	return (cont);
 }
